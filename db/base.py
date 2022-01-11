@@ -26,9 +26,3 @@ class PrimaryKeyMixin:
     @classmethod
     def get_primary_key(cls) -> List[str]:
         return ['id']
-
-
-@declarative_mixin
-class DefaultColumnsMixin(PrimaryKeyMixin):
-    created_at = Column(DateTime(timezone=True), default=func.now(), nullable=False)
-    updated_at = Column(DateTime(timezone=True), default=func.now(), onupdate=func.now(), nullable=False)

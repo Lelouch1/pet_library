@@ -1,8 +1,8 @@
 from sqlalchemy import Column, String, SmallInteger, Integer, Float, ForeignKey
-from db.base import Base, DefaultColumnsMixin
+from db.base import Base, PrimaryKeyMixin
 
 
-class BookModel(DefaultColumnsMixin, Base):
+class BookModel(Base, PrimaryKeyMixin):
     __tablename__ = 'books'
 
     name = Column(String, nullable=False)

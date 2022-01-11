@@ -1,8 +1,8 @@
 """first migration
 
-Revision ID: 9d8e697158f2
+Revision ID: a94a669199f1
 Revises: 
-Create Date: 2022-01-11 12:42:52.468396
+Create Date: 2022-01-11 20:10:55.842062
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '9d8e697158f2'
+revision = 'a94a669199f1'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -19,29 +19,21 @@ depends_on = None
 def upgrade():
     op.create_table('authors',
         sa.Column('id', sa.Integer(), nullable=False),
-        sa.Column('created_at', sa.DateTime(timezone=True), nullable=False),
-        sa.Column('updated_at', sa.DateTime(timezone=True), nullable=False),
         sa.Column('name', sa.String(), nullable=False),
         sa.PrimaryKeyConstraint('id')
     )
     op.create_table('genres',
         sa.Column('id', sa.Integer(), nullable=False),
-        sa.Column('created_at', sa.DateTime(timezone=True), nullable=False),
-        sa.Column('updated_at', sa.DateTime(timezone=True), nullable=False),
         sa.Column('name', sa.String(), nullable=False),
         sa.PrimaryKeyConstraint('id')
     )
     op.create_table('publishing_houses',
         sa.Column('id', sa.Integer(), nullable=False),
-        sa.Column('created_at', sa.DateTime(timezone=True), nullable=False),
-        sa.Column('updated_at', sa.DateTime(timezone=True), nullable=False),
         sa.Column('name', sa.String(), nullable=False),
         sa.PrimaryKeyConstraint('id')
     )
     op.create_table('books',
         sa.Column('id', sa.Integer(), nullable=False),
-        sa.Column('created_at', sa.DateTime(timezone=True), nullable=False),
-        sa.Column('updated_at', sa.DateTime(timezone=True), nullable=False),
         sa.Column('name', sa.String(), nullable=False),
         sa.Column('year', sa.SmallInteger(), nullable=False),
         sa.Column('page_count', sa.Integer(), nullable=False),
@@ -64,7 +56,6 @@ def upgrade():
         sa.ForeignKeyConstraint(('genre_id',), ['genres.id'], ondelete='CASCADE'),
         sa.PrimaryKeyConstraint('book_id', 'genre_id')
     )
-    # ### end Alembic commands ###
 
 
 def downgrade():

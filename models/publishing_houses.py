@@ -1,8 +1,8 @@
 from sqlalchemy import Column, String
-from db.base import Base, DefaultColumnsMixin
+from db.base import Base, PrimaryKeyMixin
 
 
-class PublishingHouseModel(DefaultColumnsMixin, Base):
+class PublishingHouseModel(Base, PrimaryKeyMixin):
     __tablename__ = 'publishing_houses'
 
     name = Column(String, nullable=False)

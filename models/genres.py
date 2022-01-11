@@ -1,8 +1,8 @@
 from sqlalchemy import Column, String
-from db.base import Base, DefaultColumnsMixin
+from db.base import Base, PrimaryKeyMixin
 
 
-class GenreModel(DefaultColumnsMixin, Base):
+class GenreModel(Base, PrimaryKeyMixin):
     __tablename__ = 'genres'
 
     name = Column(String, nullable=False)
